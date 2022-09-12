@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq.Expressions;
-using System.Text;
-
-namespace Ardalis.Specification
+﻿namespace Ardalis.Specification
 {
-  public interface IOrderedSpecificationBuilder<T> : ISpecificationBuilder<T>
-  {
-    bool IsChainDiscarded { get; set; }
-  }
+    public interface IOrderedSpecificationBuilder<T> : ISpecificationBuilder<T>
+    {
+        bool IsChainDiscarded { get; set; }
+    }
 }

@@ -1,15 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using
+/* Unmerged change from project 'Ardalis.Specification.UnitTests (net472)'
+Before:
 using System.Text;
 using Ardalis.Specification.UnitTests.Fixture.Entities;
+After:
+using System.Text;
+
+using Ardalis.Specification.UnitTests.Fixture.Entities;
+*/
+Ardalis.Specification.UnitTests.Fixture.Entities;
 
 namespace Ardalis.Specification.UnitTests.Fixture.Specs
 {
-  public class StoreIncludeNameSpec : Specification<Store>
-  {
-    public StoreIncludeNameSpec()
+    public class StoreIncludeNameSpec : Specification<Store>
     {
-      Query.Include(x => x.Name);
+        public StoreIncludeNameSpec()
+        {
+            Query.Include(x => x.Name);
+        }
     }
-  }
 }

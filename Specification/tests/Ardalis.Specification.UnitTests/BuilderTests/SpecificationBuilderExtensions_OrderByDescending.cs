@@ -1,39 +1,48 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
+/* Unmerged change from project 'Ardalis.Specification.UnitTests (net472)'
+Before:
 using System.Text;
 using Ardalis.Specification.UnitTests.Fixture.Entities;
+After:
+using System.Text;
+
+using Ardalis.Specification.UnitTests.Fixture.Entities;
+*/
+
+
 using Ardalis.Specification.UnitTests.Fixture.Specs;
+
 using FluentAssertions;
+
 using Xunit;
 
 namespace Ardalis.Specification.UnitTests
 {
-  public class SpecificationBuilderExtensions_OrderByDescending
-  {
-    [Fact]
-    public void AddsNothingToList_GivenNoOrderExpression()
+    public class SpecificationBuilderExtensions_OrderByDescending
     {
-      var spec = new StoreEmptySpec();
+        [Fact]
+        public void AddsNothingToList_GivenNoOrderExpression()
+        {
+            var spec = new StoreEmptySpec();
 
-      spec.OrderExpressions.Should().BeEmpty();
+            spec.OrderExpressions.Should().BeEmpty();
+        }
+
+        [Fact]
+        public void AddsNothingToList_GivenOrderExpressionWithFalseCondition()
+        {
+            var spec = new CompanyByIdWithFalseConditions(1);
+
+            spec.OrderExpressions.Should().BeEmpty();
+        }
+
+        [Fact]
+        public void AddsOrderExpressionToListWithOrderByDescendingType_GivenOrderByDescendingExpression()
+        {
+            var spec = new StoresOrderedDescendingByNameSpec();
+
+            spec.OrderExpressions.Should().ContainSingle();
+            spec.OrderExpressions.Single().OrderType.Should().Be(OrderTypeEnum.OrderByDescending);
+        }
     }
-
-    [Fact]
-    public void AddsNothingToList_GivenOrderExpressionWithFalseCondition()
-    {
-      var spec = new CompanyByIdWithFalseConditions(1);
-
-      spec.OrderExpressions.Should().BeEmpty();
-    }
-
-    [Fact]
-    public void AddsOrderExpressionToListWithOrderByDescendingType_GivenOrderByDescendingExpression()
-    {
-      var spec = new StoresOrderedDescendingByNameSpec();
-
-      spec.OrderExpressions.Should().ContainSingle();
-      spec.OrderExpressions.Single().OrderType.Should().Be(OrderTypeEnum.OrderByDescending);
-    }
-  }
 }

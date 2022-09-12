@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Ardalis.Specification
+﻿namespace Ardalis.Specification
 {
-  public interface ISpecificationValidator
-  {
-    bool IsValid<T>(T entity, ISpecification<T> specification);
-  }
+    public interface ISpecificationValidator
+    {
+        bool IsValid<T>(T entity, ISpecification<T> specification);
+    }
 }

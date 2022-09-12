@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace Ardalis.Specification
 {
-  public interface IInMemoryEvaluator
-  {
-    IEnumerable<T> Evaluate<T>(IEnumerable<T> query, ISpecification<T> specification);
-  }
+    public interface IInMemoryEvaluator
+    {
+        IEnumerable<T> Evaluate<T>(IEnumerable<T> query, ISpecification<T> specification);
+    }
 }

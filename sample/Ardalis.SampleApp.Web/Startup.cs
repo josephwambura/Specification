@@ -3,6 +3,7 @@ using Ardalis.SampleApp.Infrastructure.Data;
 using Ardalis.SampleApp.Infrastructure.DataAccess;
 using Ardalis.SampleApp.Web.Interfaces;
 using Ardalis.SampleApp.Web.Services;
+
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;

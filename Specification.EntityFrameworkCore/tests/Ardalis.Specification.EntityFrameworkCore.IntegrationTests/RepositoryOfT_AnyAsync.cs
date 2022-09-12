@@ -1,52 +1,55 @@
 ﻿using System.Threading.Tasks;
+
 using Ardalis.Specification.EntityFrameworkCore.IntegrationTests.Fixture;
 using Ardalis.Specification.UnitTests.Fixture.Entities.Seeds;
 using Ardalis.Specification.UnitTests.Fixture.Specs;
+
 using FluentAssertions;
+
 using Xunit;
 
 namespace Ardalis.Specification.EntityFrameworkCore.IntegrationTests
 {
-  public class RepositoryOfT_AnyAsync : RepositoryOfT_AnyAsync_TestKit
-  {
-    public RepositoryOfT_AnyAsync(SharedDatabaseFixture fixture) : base(fixture, SpecificationEvaluator.Default)
+    public class RepositoryOfT_AnyAsync : RepositoryOfT_AnyAsync_TestKit
     {
-    }
-  }
-
-  public class RepositoryOfT_AnyAsync_Cached : RepositoryOfT_AnyAsync_TestKit
-  {
-    public RepositoryOfT_AnyAsync_Cached(SharedDatabaseFixture fixture) : base(fixture, SpecificationEvaluator.Cached)
-    {
-    }
-  }
-
-  public abstract class RepositoryOfT_AnyAsync_TestKit : IntegrationTestBase
-  {
-    protected RepositoryOfT_AnyAsync_TestKit(SharedDatabaseFixture fixture, ISpecificationEvaluator specificationEvaluator) : base(fixture, specificationEvaluator) { }
-
-    [Fact]
-    public virtual async Task ReturnsTrueOnStoresRecords_WithoutSpec()
-    {
-      var result = await storeRepository.AnyAsync();
-
-      result.Should().BeTrue();
+        public RepositoryOfT_AnyAsync(SharedDatabaseFixture fixture) : base(fixture, SpecificationEvaluator.Default)
+        {
+        }
     }
 
-    [Fact]
-    public virtual async Task ReturnsTrue_GivenStoreByIdSpecWithValidStore()
+    public class RepositoryOfT_AnyAsync_Cached : RepositoryOfT_AnyAsync_TestKit
     {
-      var result = await storeRepository.AnyAsync(new StoreByIdSpec(StoreSeed.VALID_STORE_ID));
-
-      result.Should().BeTrue();
+        public RepositoryOfT_AnyAsync_Cached(SharedDatabaseFixture fixture) : base(fixture, SpecificationEvaluator.Cached)
+        {
+        }
     }
 
-    [Fact]
-    public virtual async Task ReturnsFalse_GivenStoreByIdSpecWithInvalidStore()
+    public abstract class RepositoryOfT_AnyAsync_TestKit : IntegrationTestBase
     {
-      var result = await storeRepository.AnyAsync(new StoreByIdSpec(0));
+        protected RepositoryOfT_AnyAsync_TestKit(SharedDatabaseFixture fixture, ISpecificationEvaluator specificationEvaluator) : base(fixture, specificationEvaluator) { }
 
-      result.Should().BeFalse();
+        [Fact]
+        public virtual async Task ReturnsTrueOnStoresRecords_WithoutSpec()
+        {
+            var result = await storeRepository.AnyAsync();
+
+            result.Should().BeTrue();
+        }
+
+        [Fact]
+        public virtual async Task ReturnsTrue_GivenStoreByIdSpecWithValidStore()
+        {
+            var result = await storeRepository.AnyAsync(new StoreByIdSpec(StoreSeed.VALID_STORE_ID));
+
+            result.Should().BeTrue();
+        }
+
+        [Fact]
+        public virtual async Task ReturnsFalse_GivenStoreByIdSpecWithInvalidStore()
+        {
+            var result = await storeRepository.AnyAsync(new StoreByIdSpec(0));
+
+            result.Should().BeFalse();
+        }
     }
-  }
 }

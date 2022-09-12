@@ -11,6 +11,7 @@ namespace Ardalis.SampleApp.Core.Specifications
     {
       return pageSize <= 0 ? DefaultPageSize : pageSize;
     }
+
     public static int CalculateSkip(int pageSize, int page)
     {
       page = page <= 0 ? DefaultPage : page;
@@ -22,6 +23,7 @@ namespace Ardalis.SampleApp.Core.Specifications
     {
       return CalculateTake(baseFilter.PageSize);
     }
+
     public static int CalculateSkip(BaseFilter baseFilter)
     {
       return CalculateSkip(baseFilter.PageSize, baseFilter.Page);
