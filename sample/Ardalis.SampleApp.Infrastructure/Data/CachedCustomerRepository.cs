@@ -82,10 +82,10 @@ public class CachedRepository<T> : IReadRepository<T> where T : class, IAggregat
             {
                 entry.SetOptions(_cacheOptions);
                 _logger.LogWarning("Fetching source data for " + key);
-                return _sourceRepository.GetBySpecAsync(specification, cancellationToken);
+                return _sourceRepository.FirstOrDefaultAsync(specification, cancellationToken);
             });
         }
-        return _sourceRepository.GetBySpecAsync(specification, cancellationToken);
+        return _sourceRepository.FirstOrDefaultAsync(specification, cancellationToken);
     }
 
     /// <inheritdoc/>

@@ -39,7 +39,7 @@ public class CustomerUiService : ICustomerUiService
 
   public async Task<CustomerDto> GetCustomer(string customerName)
   {
-    var customer = await customerRepository.GetBySpecAsync(new CustomerByNameSpec(customerName));
+    var customer = await customerRepository.FirstOrDefaultAsync(new CustomerByNameSpec(customerName));
 
     Guard.Against.Null(customer, nameof(customer));
 
@@ -48,7 +48,7 @@ public class CustomerUiService : ICustomerUiService
 
   public async Task<CustomerDto> GetCustomerWithStores(string customerName)
   {
-    var customer = await customerRepository.GetBySpecAsync(new CustomerByNameWithStoresSpec(customerName));
+    var customer = await customerRepository.FirstOrDefaultAsync(new CustomerByNameWithStoresSpec(customerName));
 
     Guard.Against.Null(customer, nameof(customer));
 
